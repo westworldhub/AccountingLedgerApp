@@ -25,6 +25,7 @@ public class Ledger {
         transactions.add(t);
         System.out.println("Payment added");
     }
+    // Display All transaction
     public  void displayAll () {
         for(int i = transactions.size()-1; i>=0; i--) {
             System.out.println(transactions.get(i));
