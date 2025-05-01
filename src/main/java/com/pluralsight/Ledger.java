@@ -31,5 +31,13 @@ public class Ledger {
             System.out.println(transactions.get(i));
         }
     }
+    public void displayDeposit(){
+        for(int i = transactions.size()-1; i >=0; i--){
+            Transaction t = transactions.get(i);
+            if (t.getAmount()>=0){
+                System.out.println(t);
+            }
+        }
+    }
 
 }
