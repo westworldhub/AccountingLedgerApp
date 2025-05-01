@@ -2,7 +2,10 @@ package com.pluralsight;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+
 
 public class Ledger {
     private List <Transaction> transactions;
@@ -22,6 +25,10 @@ public class Ledger {
         transactions.add(t);
         System.out.println("Payment added");
     }
-
+    public  void displayAll () {
+        for(int i = transactions.size()-1; i>=0; i--) {
+            System.out.println(transactions.get(i));
+        }
+    }
 
 }
