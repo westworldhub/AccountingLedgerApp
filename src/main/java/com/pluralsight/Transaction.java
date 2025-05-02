@@ -18,6 +18,7 @@ public class Transaction {
         this.amount = amount;
 
     }
+    // Getter and setter methods for each field
     public LocalDate getDate() {
         return date;
     }
@@ -56,6 +57,23 @@ public class Transaction {
 
     public void setAmount(double amount) {
         this.amount = amount;
+    }
+    //Converts the transaction to a single line of CSV format.
+    public String toCSV() {
+        return date + "|" + time + "|" + description + "|" + vendor + "|" + amount;
+    }
+
+    //Creates a Transaction object from a line of CSV-formatted text
+    // This is typically used when reading from a CSV file.
+    public static Transaction fromCSV(String line) {
+        String[] parts = line.split("\\|");
+        return new Transaction(
+                LocalDate.parse(parts[0]),
+                LocalTime.parse(parts[1]),
+                parts[2],
+                parts[3],
+                Double.parseDouble(parts[4])
+        );
     }
 
     // Override

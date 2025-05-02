@@ -1,15 +1,23 @@
 package com.pluralsight;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
+        List<Transaction> transactions = TransactionHelper.readTransactions("/Users/abdulkadiryanar/Desktop/Pluralsight/Workbook-3/AccountingLedgerApp/src/main/resources/data/transactions.csv");
+        new Ledger(transactions);
+        new Reports(transactions);
         Scanner read = new Scanner(System.in);
         String choice;
 
-        do {
-            System.out.println("Welcome to Accounting Ledger Menu \n");
+        boolean running=true;
+        while (running){
+            System.out.println("\n Welcome to Accounting Ledger App ");
+
+            System.out.println("\n--- Home Menu ---");
             System.out.println("(D) Add Deposit: ");
             System.out.println("(P) Make Payment(Debit): ");
             System.out.println("(L) Ledger: ");
@@ -25,9 +33,8 @@ public class Main {
                     System.out.println("Please enter vendor: ");
                     String depositVendor = read.nextLine();
                     System.out.println("Please enter amount");
-                    double depositAmount = read.nextDouble();
-                    //and save it to the csv file with method
-
+                    double depositAmount = Double.parseDouble(read.nextLine());
+                    Ledger.addDeposit(depositDescription,depositVendor,depositAmount);
                     break;
                 case "P":
                     // prompt user for the debit
@@ -36,17 +43,19 @@ public class Main {
                     System.out.println("Please enter vendor: ");
                     String paymentVendor = read.nextLine();
                     System.out.println("Please enter amount");
-                    double paymentAmount = read.nextDouble();
+                    double paymentAmount = Double.parseDouble(read.nextLine());
+                    Ledger.makePayment(paymentDescription,paymentVendor,paymentAmount);
                     //information and save it to the csv file
                     break;
                 case "L":
-                    //display the ledger screen
-
+                    Ledger.ledgerMenu(read);
                     break;
                 case "X":
+                    running=false;
+                    System.out.println("Exiting...");
                     //exit the application
                     break;
             }
-        } while (!choice.equals("X"));
+        }
     }
 }
