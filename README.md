@@ -2,7 +2,8 @@
 
 📝 Project Description
 
-The Financial Ledger Application is a Java-based Command Line Interface (CLI) program that allows users to manage and track their financial transactions.
+The Accounting Ledger Application is a Java-based Command Line Interface (CLI) program that allows users to manage and track their financial transactions.
+
 
 📁 Project Structure
 
@@ -12,6 +13,7 @@ The Financial Ledger Application is a Java-based Command Line Interface (CLI) pr
 
 ⚙️ FEATURES
 
+ 
  🏠 Home Menu
  
  `D` Add Deposit  
@@ -40,15 +42,9 @@ The Financial Ledger Application is a Java-based Command Line Interface (CLI) pr
 
 
 📁 CSV Format
+
 All transactions are stored in transactions.csv with the format:
 
-
-🚀 Getting Started
-
-1.Clone this repository.
-2.Open in IntelliJ or any Java IDE.
-3.Make sure transactions.csv exists in the target folder. If not, it will be created automatically.
-4.Run Main.java.
 
 📸 Screenshots
 
@@ -58,6 +54,23 @@ All transactions are stored in transactions.csv with the format:
 
 ![image](https://github.com/user-attachments/assets/00a205c3-a981-40d6-9b40-c18eb494f58d)
 
+
+🚀 Getting Started
+
+1.Clone this repository.
+
+2.Open in IntelliJ or any Java IDE.
+
+3.Make sure transactions.csv exists in the target folder. If not, it will be created automatically.
+
+4.Run Main.java.
+
+
+🛠 Tech Stack
+
+• Java 17+
+
+• Maven (optional, not required unless you add dependencies)
 
 
 ✅ Future Enhancements
