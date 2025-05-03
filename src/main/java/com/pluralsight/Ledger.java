@@ -10,7 +10,7 @@ public  class Ledger {
     // Static list to hold all transactions in memory
     private static List <Transaction> transactions;
     // File path to the CSV file where transactions are stored
-    private static final String FILE_PATH = "/Users/abdulkadiryanar/Desktop/Pluralsight/Workbook-3/AccountingLedgerApp/target/transactions.csv";
+    private static final String FILE_PATH = "/Users/abdulkadiryanar/Desktop/Pluralsight/Workbook-3/AccountingLedgerApp/src/main/resources/data/transactions.csv";
     //Constructor to initialize the Ledger with a list of transactions.
     public Ledger(List<Transaction> transactions) {
         this.transactions=transactions;
@@ -28,7 +28,7 @@ public  class Ledger {
 
     //Adds a payment transaction to the ledger.
     public static void makePayment(String description,String vendor, double amount){
-        Transaction payment =new Transaction(LocalDate.now(),LocalTime.now(),description,vendor,amount);
+        Transaction payment =new Transaction(LocalDate.now(),LocalTime.now(),description,vendor,-Math.abs(amount));
         transactions.add(payment);
         TransactionHelper.saveTransaction(payment,FILE_PATH);
         System.out.println("Payment added");
@@ -66,34 +66,34 @@ public  class Ledger {
 
         boolean ledger=true;
         while(ledger){
-          System.out.println("\n--- Ledger Menu ---\n");
-          System.out.println("A) Display All");
-          System.out.println("D) Display Deposits");
-          System.out.println("P) Display Payments");
-          System.out.println("R) Display Reports Menu");
-          System.out.println("H) Home");
-          System.out.print("Select: \n");
-          String choice = read.nextLine().trim().toUpperCase();
+            System.out.println("\n--- Ledger Menu ---\n");
+            System.out.println("A) Display All");
+            System.out.println("D) Display Deposits");
+            System.out.println("P) Display Payments");
+            System.out.println("R) Display Reports Menu");
+            System.out.println("H) Home");
+            System.out.print("Select: \n");
+            String choice = read.nextLine().trim().toUpperCase();
 
-          switch (choice){
-              case "A" :
-                  displayAll( );
-                  break;
-              case "D" :
-                  displayDeposit();
-                  break;
-              case "P" :
-                  displayDeposit();
-                  break;
-              case "R" :
-                Reports.reportsMenu(read);
-              case "H" :
-                  ledger=false; //Exit loop to return to Home
-                  break;
-              default:
-                  System.out.println("invalid choice");
-          }
-      }
+            switch (choice){
+                case "A" :
+                    displayAll( );
+                    break;
+                case "D" :
+                    displayDeposit();
+                    break;
+                case "P" :
+                    displayPayment();
+                    break;
+                case "R" :
+                    Reports.reportsMenu(read);
+                case "H" :
+                    ledger=false; //Exit loop to return to Home
+                    break;
+                default:
+                    System.out.println("invalid choice");
+            }
+        }
     }
 
 }
